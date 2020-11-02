@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 import GetQuestion from './components/GetQuestion'
+import Answers from './components/Answers'
 
 const App = () => {
   const [questionNumber, setQuestionNumber] = useState(Math.floor(Math.random() * 50));
@@ -21,11 +22,6 @@ const App = () => {
           <h2><GetQuestion questionNumber={questionNumber} /></h2>
         </div>
         <div className="answers-container">
-          <div className="answer-container">Answer A</div>
-          <div className="answer-container">Answer B</div>
-          <div className="break"></div>
-          <div className="answer-container">Answer C</div>
-          <div className="answer-container">Answer D</div>
 
         </div>
 
@@ -35,3 +31,8 @@ const App = () => {
 }
 
 export default App;
+
+
+// Improvements
+
+// Questions array will come from back - encodeURI, avoiding duplication
