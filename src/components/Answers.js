@@ -605,20 +605,42 @@ const questions = [
     }
 ]
 
+
+// http://stackoverflow.com/questions/962802#962890
+const shuffle = array => {
+    let tmp, current, top = array.length;
+    if (top) while (--top) {
+        current = Math.floor(Math.random() * (top + 1));
+        tmp = array[current];
+        array[current] = array[top];
+        array[top] = tmp;
+    }
+    return array;
+}
+
+
 const randomAnswer = (questionNumber) => {
     console.log(questions[questionNumber].correct_answer);
-    return questions[questionNumber].correct_answer;
+    let answersArray = [
+        questions[questionNumber].correct_answer,
+        questions[questionNumber].incorrect_answers[0],
+        questions[questionNumber].incorrect_answers[1],
+        questions[questionNumber].incorrect_answers[2]
+    ];
+
+    let randomizedAnswers = shuffle(answersArray);
+    console.log(randomizedAnswers);
+    return randomizedAnswers;
 }
 
 const Answers = ({ questionNumber }) => {
     return (
-        <div>
-            {randomAnswer(questionNumber)}
-            <div className="answer-container"></div>
-            <div className="answer-container">Answer B</div>
+        <div className="answers-container">
+            <div className="answer-container">{randomAnswer(questionNumber)[0]}</div>
+            <div className="answer-container">{randomAnswer(questionNumber)[1]}</div>
             <div className="break"></div>
-            <div className="answer-container">Answer C</div>
-            <div className="answer-container">Answer D</div>
+            <div className="answer-container">{randomAnswer(questionNumber)[2]}</div>
+            <div className="answer-container">{randomAnswer(questionNumber)[3]}</div>
         </div>
     );
 };

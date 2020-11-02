@@ -21,9 +21,8 @@ const App = () => {
           {console.log("qN:", questionNumber)}
           <h2><GetQuestion questionNumber={questionNumber} /></h2>
         </div>
-        <div className="answers-container">
+        <Answers questionNumber={questionNumber} />
 
-        </div>
 
       </div>
     </div>

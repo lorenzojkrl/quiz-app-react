@@ -606,9 +606,19 @@ const questions = [
     }
 ]
 
+// This function translate unicode char to standard char 
+// it's not always working
+// Find better solution
+function parseHtmlEnteties(str) {
+    return str.replace(/&#([0-9]{1,4});/gi, function (match, numStr) {
+        var num = parseInt(numStr, 10); // read num as normal number
+        return String.fromCharCode(num);
+    });
+}
+
 const question = (questionNumber) => {
     console.log(questions[questionNumber].question);
-    return questions[questionNumber].question;
+    return parseHtmlEnteties(questions[questionNumber].question);
 }
 
 const GetQuestion = ({ questionNumber }) => {
