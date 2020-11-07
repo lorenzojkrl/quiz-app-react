@@ -617,7 +617,7 @@ function decode(str) {
 const GetQuestion = ({ questionNumber, questions }) => {
 
     let question = decode(questions[questionNumber].question)
-
+    console.log("In GetQuestion.js - question: ", questions[questionNumber].question);
     return (
         <div className="question-container">
             <h2>{question}</h2>
