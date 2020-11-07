@@ -623,8 +623,8 @@ const question = (questionNumber) => {
 
 const GetQuestion = ({ questionNumber }) => {
     return (
-        <div>
-            {question(questionNumber)}
+        <div className="question-container">
+            <h2>{question(questionNumber)}</h2>
         </div>
     );
 };

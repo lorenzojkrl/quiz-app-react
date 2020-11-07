@@ -603,24 +603,23 @@ const questions = [
             "Stream cipher"
         ]
     }
-]
+];
 
+//  Fisher-Yates shuffle
+const shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
 
-// http://stackoverflow.com/questions/962802#962890
-const shuffle = array => {
-    let tmp, current, top = array.length;
-    if (top) while (--top) {
-        current = Math.floor(Math.random() * (top + 1));
-        tmp = array[current];
-        array[current] = array[top];
-        array[top] = tmp;
+        // swap elements array[i] and array[j]
+        // we use "destructuring assignment" syntax to achieve that
+        // let t = array[i]; array[i] = array[j]; array[j] = t
+        [array[i], array[j]] = [array[j], array[i]];
     }
-    return array;
+    return array
 }
 
-
 const randomAnswer = (questionNumber) => {
-    console.log(questions[questionNumber].correct_answer);
+    console.log(`Correct answer: ${questions[questionNumber].correct_answer}`);
     let answersArray = [
         questions[questionNumber].correct_answer,
         questions[questionNumber].incorrect_answers[0],
@@ -633,14 +632,27 @@ const randomAnswer = (questionNumber) => {
     return randomizedAnswers;
 }
 
-const Answers = ({ questionNumber }) => {
+const Button = ({ handleClick, text }) => (
+    <button onClick={handleClick}>{text}</button>
+);
+
+const handleAnswer = () => {
+    console.log("Button clicked!");
+};
+
+const Answers = ({ questionNumber, setQuestionNumber }) => {
+    console.log(`questionNumber: ${questionNumber}`)
+    let randomized = randomAnswer(questionNumber)
     return (
         <div className="answers-container">
-            <div className="answer-container">{randomAnswer(questionNumber)[0]}</div>
-            <div className="answer-container">{randomAnswer(questionNumber)[1]}</div>
+            <div className="answer-container"><button>{randomized[0]}</button></div>
+            <div className="answer-container">{randomized[1]}</div>
             <div className="break"></div>
-            <div className="answer-container">{randomAnswer(questionNumber)[2]}</div>
-            <div className="answer-container">{randomAnswer(questionNumber)[3]}</div>
+            <div className="answer-container">{randomized[2]}</div>
+            <div className="answer-container">{randomized[3]}</div>
+            <div className="break"></div>
+            <div className="answer-container"> <Button handleClick={handleAnswer} text={randomized[0]}></Button> </div>
+
         </div>
     );
 };
