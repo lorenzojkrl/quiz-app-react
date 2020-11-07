@@ -613,7 +613,6 @@ const questions = [
 const shuffle = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-
     // swap elements array[i] and array[j]
     // we use "destructuring assignment" syntax to achieve that
     // let t = array[i]; array[i] = array[j]; array[j] = t
@@ -638,23 +637,19 @@ const randomAnswer = (questionNumber) => {
 
 // End of Answer Component ---------------------------
 
+
 const App = () => {
   const [questionNumber, setQuestionNumber] = useState(Math.floor(Math.random() * 50));
   const [score, setScore] = useState(0)
   const [questionsLeft, setQuestionsLeft] = useState(0)
+
 
   const Button = ({ text }) => {
 
     const handleMe = () => {
       console.log("clicked on: ", text)
       setQuestionsLeft(questionsLeft + 1)
-      if (questionsLeft === 2) {
-        console.log("Fuori dai piedi");
-        return {
-          "question-container": { display: "none" },
-          "answers-container": "hidden"
-        }
-      }
+
       if (text === questions[questionNumber].correct_answer) {
         console.log("Correct anaswer");
         setScore(score + 1)
@@ -672,39 +667,30 @@ const App = () => {
 
   let randomized = randomAnswer(questionNumber)
 
-
-
   return (
     <div className="App">
       <nav className="navbar">
-        Space reserved for navbar
-    </nav>
+        Space reserved for me
+      </nav>
 
       <header className="App-header">
         QUESTION {questionsLeft}/10
-
       </header>
 
       <div className='main-section'>
-        {questionsLeft === 10 ? (
-          <FinalScore score={Number(score)} />
-        ) : (
-            <div>
-              <GetQuestion questionNumber={questionNumber} />
-              <div className="answers-container">
-                <div className="answer-container"><Button text={randomized[0]} /></div>
-                <div className="answer-container"><Button text={randomized[1]} /></div>
-                <div className="break"></div>
-                <div className="answer-container"><Button text={randomized[2]} /></div>
-                <div className="answer-container"><Button text={randomized[3]} /></div>
-              </div>
+        {questionsLeft === 10
+          ? <FinalScore score={Number(score)} />
+          : <div>
+            <GetQuestion questionNumber={questionNumber} questions={questions} />
+            <div className="answers-container">
+              <div className="answer-container"><Button text={randomized[0]} /></div>
+              <div className="answer-container"><Button text={randomized[1]} /></div>
+              <div className="break"></div>
+              <div className="answer-container"><Button text={randomized[2]} /></div>
+              <div className="answer-container"><Button text={randomized[3]} /></div>
             </div>
-          )}
-
-        {/* <Answers
-          questionNumber={questionNumber}
-          setQuestionNumber={setQuestionNumber}
-        /> */}
+          </div>
+        }
 
       </div>
     </div>
