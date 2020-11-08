@@ -27,7 +27,7 @@ const App = () => {
   const StartButton = ({ text }) => {
     const startQuiz = () => {
       setPlay(1)
-      console.log("In StartButton - startQuiz concluded");
+      // console.log("In StartButton - startQuiz concluded");
     }
 
     return (
@@ -74,4 +74,6 @@ export default App;
 
 
 // Improvements
-// Questions array will come from back - encodeURI, avoiding duplication
+// randomAnswer to be reviewed with ...
+// refactor StartButton and header in component
+// Build and move to backend

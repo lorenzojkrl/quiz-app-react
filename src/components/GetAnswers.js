@@ -11,8 +11,9 @@ const shuffle = (array) => {
     return array
 }
 
+// Reviee and eliminate, use ...
 const randomAnswer = (questionNumber, questionsList) => {
-    console.log(`In randomAnswer - Correct answer: ${questionsList[questionNumber].correct_answer}`);
+    // console.log(`In randomAnswer - Correct answer: ${questionsList[questionNumber].correct_answer}`);
     let answersArray = [
         questionsList[questionNumber].correct_answer,
         questionsList[questionNumber].incorrect_answers[0],
@@ -21,7 +22,7 @@ const randomAnswer = (questionNumber, questionsList) => {
     ];
 
     let randomizedAnswers = shuffle(answersArray);
-    console.log('In randomAnswer - randomized: ', randomizedAnswers);
+    // console.log('In randomAnswer - randomized: ', randomizedAnswers);
     return randomizedAnswers;
 }
 
@@ -47,13 +48,13 @@ const GetAnswers = ({ questionNumber, questions, setQuestionNumber, questionsLef
     const AnswerButton = ({ value }) => {
 
         const handleUserAnswer = ({ value }) => {
-            console.log("In handleUserAnswer - entered");
-            console.log("Text is: ", value)
+            // console.log("In handleUserAnswer - entered");
+            // console.log("Text is: ", value)
             if (value === questions[questionNumber].correct_answer) {
-                console.log("CORRECT! ", value)
+                // console.log("CORRECT! ", value)
                 setScore(score += 1)
             } else {
-                console.log("WRONG! ", value)
+                // console.log("WRONG! ", value)
             }
             setQuestionsLeft(questionsLeft + 1)
             setQuestionNumber(Math.floor(Math.random() * 50))
