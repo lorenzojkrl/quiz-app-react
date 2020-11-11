@@ -8,21 +8,20 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 
 const App = () => {
-  const [questionsJSON, setQuestionsJSON] = useState(["Get Ready"])
+  const [questionsJSON, setQuestionsJSON] = useState([])
   const [questionNumber, setQuestionNumber] = useState(Math.floor(Math.random() * 50));
   const [score, setScore] = useState(0)
   const [questionsLeft, setQuestionsLeft] = useState(0)
   const [play, setPlay] = useState(0)
 
 
-  const hook = () => {
+  useEffect(() => {
     axios
       .get('http://localhost:3001/questions')
       .then(response => {
         setQuestionsJSON(response.data)
       })
-  }
-  useEffect(hook, [])
+  }, [])
 
   const StartButton = ({ text }) => {
     const startQuiz = () => {
