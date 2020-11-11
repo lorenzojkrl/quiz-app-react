@@ -15,9 +15,10 @@ const App = () => {
   const [play, setPlay] = useState(0)
 
 
+  // This is in use, not getQuestions in services
   useEffect(() => {
     axios
-      .get('http://localhost:3001/questions')
+      .get('http://localhost:3001/api/questions')
       .then(response => {
         setQuestionsJSON(response.data)
       })
