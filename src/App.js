@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import axios from 'axios'
+// import axios from 'axios'
 import FinalScore from './components/FinalScore'
 import GetQuestion from './components/GetQuestion'
 import GetAnswers from './components/GetAnswers'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+import questionService from './services/getQuestions'
 
 const App = () => {
   const [questionsJSON, setQuestionsJSON] = useState([])
@@ -17,17 +18,16 @@ const App = () => {
 
   // This is in use, not getQuestions in services
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/questions')
+    questionService
+      .getAll()
       .then(response => {
-        setQuestionsJSON(response.data)
+        setQuestionsJSON(response)
       })
   }, [])
 
   const StartButton = ({ text }) => {
     const startQuiz = () => {
       setPlay(1)
-      // console.log("In StartButton - startQuiz concluded");
     }
 
     return (

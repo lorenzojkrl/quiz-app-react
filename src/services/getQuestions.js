@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/api/questions'
+const baseUrl = '/api/questions'
 
 
 const getAll = () => {
@@ -7,4 +7,4 @@ const getAll = () => {
     return request.then(response => response.data)
 }
 
-export default getAll
+export default { getAll }
