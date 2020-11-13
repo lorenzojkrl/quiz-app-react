@@ -18,7 +18,7 @@ const App = () => {
   // This is in use, not getQuestions in services
   useEffect(() => {
     axios
-      .get('http://localhost:3001/api/questions')
+      .get('http://localhost:3001/questions')
       .then(response => {
         setQuestionsJSON(response.data)
       })
