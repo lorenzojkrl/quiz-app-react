@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     const footerStyle = {
-        color: 'green',
+        color: 'blue',
         fontStyle: 'italic',
         fontSize: 16,
         backgroundColor: "#F8F8F8",
@@ -20,7 +20,7 @@ const Footer = () => {
     return (
         <div style={footerStyle}>
             <br />
-            <em>Space reserved for footer</em>
+            <em>Developed by Lorenzo Z</em>
         </div>
     )
 }

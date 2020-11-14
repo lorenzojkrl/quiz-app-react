@@ -20,6 +20,5 @@
 .main-section {
   display: flex;
   flex-flow: column wrap;
-  background-color: aqua;
   /* border: 1px solid black; */
 }

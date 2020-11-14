@@ -7,6 +7,7 @@ import GetAnswers from './components/GetAnswers'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import questionService from './services/getQuestions'
+import { Button } from '@material-ui/core';
 
 const App = () => {
   const [questionsJSON, setQuestionsJSON] = useState([])
@@ -26,14 +27,19 @@ const App = () => {
   }, [])
 
   const StartButton = ({ text }) => {
+
     const startQuiz = () => {
-      setPlay(1)
+      setTimeout(() => {
+        setPlay(1)
+      }, 400)
     }
 
     return (
-      <button onClick={startQuiz}>{text}</button>
+      <Button variant="outlined" color="primary" size="large" onClick={startQuiz} >{text}</Button>
     );
   }
+
+
 
   return (
     <div className="App">
@@ -45,7 +51,7 @@ const App = () => {
         }
 
         {play === 0
-          ? <StartButton text="Start Quiz!"></StartButton>
+          ? <StartButton text="START!"></StartButton>
           : <div className='main-section'>
             {questionsLeft === 10
               ? <FinalScore score={Number(score)} />
@@ -65,6 +71,7 @@ const App = () => {
           </div>
         }
       </div>
+
       <Footer />
     </div>
   );

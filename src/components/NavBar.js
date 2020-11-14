@@ -2,7 +2,7 @@ import React from 'react';
 
 const NavBar = () => {
     const navBarStyle = {
-        color: 'green',
+        color: 'blue',
         fontStyle: 'italic',
         fontSize: 16,
         backgroundColor: "#F8F8F8",

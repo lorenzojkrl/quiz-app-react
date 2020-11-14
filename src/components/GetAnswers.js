@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from '@material-ui/core';
+
 
 const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -30,15 +32,19 @@ const randomAnswer = (questionNumber, questionsList) => {
 const GetAnswers = ({ questionNumber, questions, setQuestionNumber, questionsLeft, setQuestionsLeft, score, setScore }) => {
     const AnswersContainer = {
         display: 'flex',
-        flexFlow: 'row wrap'
+        justifyContent: 'space-around',
+        flexFlow: 'row wrap',
     }
+
     const AnswerContainer = {
-        padding: '20px',
-        border: '1px solid black',
-        minWidth: '300px',
+        // padding: '20px',
+        // border: '1px solid black',
+        maxWidth: '280px',
+        // maxHeight: '70px',
         flex: '300px',
         background: 'none',
         fontSize: 16,
+        margin: '5px',
     }
     const breakRow = {
         flexBasis: '100%',
@@ -61,7 +67,8 @@ const GetAnswers = ({ questionNumber, questions, setQuestionNumber, questionsLef
         }
 
         return (
-            <button className="answer-container" style={AnswerContainer} onClick={() => handleUserAnswer({ value })}  >{value}</button>
+            // <button className="answer-container" style={AnswerContainer} onClick={() => handleUserAnswer({ value })}  >{value}</button>
+            <Button variant="outlined" color="primary" size="large" style={AnswerContainer} onClick={() => handleUserAnswer({ value })}>{value}</Button>
         )
     }
 
