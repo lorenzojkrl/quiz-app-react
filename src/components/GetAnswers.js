@@ -13,7 +13,7 @@ const shuffle = (array) => {
     return array
 }
 
-// Reviee and eliminate, use ...
+// Review and eliminate, use ...
 const randomAnswer = (questionNumber, questionsList) => {
     // console.log(`In randomAnswer - Correct answer: ${questionsList[questionNumber].correct_answer}`);
     let answersArray = [
@@ -42,33 +42,55 @@ const GetAnswers = ({ questionNumber, questions, setQuestionNumber, questionsLef
         maxWidth: '280px',
         // maxHeight: '70px',
         flex: '300px',
-        background: 'none',
+        // background: 'none',
         fontSize: 16,
         margin: '5px',
     }
+
     const breakRow = {
         flexBasis: '100%',
         height: 0,
     }
 
-    const AnswerButton = ({ value }) => {
+    const AnswerButton = ({ value, e }) => {
 
-        const handleUserAnswer = ({ value }) => {
+        const handleUserAnswer = ({ value, e }) => {
             // console.log("In handleUserAnswer - entered");
             // console.log("Text is: ", value)
             if (value === questions[questionNumber].correct_answer) {
                 // console.log("CORRECT! ", value)
                 setScore(score += 1)
+                // e.target.style.border = '1px solid green'
+                // setTimeout(() => {
+                //     // alert('resetting')
+                //     setScore(score += 1)
+                //     setQuestionsLeft(questionsLeft + 1)
+                //     setQuestionNumber(Math.floor(Math.random() * 50))
+                // }, 700)
             } else {
                 // console.log("WRONG! ", value)
+                // e.target.style.border = '1px solid red'
+                // setTimeout(() => {
+                //     // alert('resetting')
+                //     setQuestionsLeft(questionsLeft + 1)
+                //     setQuestionNumber(Math.floor(Math.random() * 50))
+                // }, 700)
             }
+
             setQuestionsLeft(questionsLeft + 1)
             setQuestionNumber(Math.floor(Math.random() * 50))
         }
 
         return (
-            // <button className="answer-container" style={AnswerContainer} onClick={() => handleUserAnswer({ value })}  >{value}</button>
-            <Button variant="outlined" color="primary" size="large" style={AnswerContainer} onClick={() => handleUserAnswer({ value })}>{value}</Button>
+            <Button
+                variant="outlined"
+                color="primary"
+                size="large"
+                style={AnswerContainer}
+                onClick={(e) => handleUserAnswer({ value, e })}
+            >
+                {value}
+            </Button>
         )
     }
 
@@ -81,8 +103,6 @@ const GetAnswers = ({ questionNumber, questions, setQuestionNumber, questionsLef
             <div className="break" style={breakRow}></div>
             <AnswerButton value={randomized[2]} />
             <AnswerButton value={randomized[3]} />
-
-
         </div>
     );
 };

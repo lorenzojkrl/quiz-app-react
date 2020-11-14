@@ -32,14 +32,21 @@ const App = () => {
       setTimeout(() => {
         setPlay(1)
       }, 400)
+
+
     }
 
     return (
-      <Button variant="outlined" color="primary" size="large" onClick={startQuiz} >{text}</Button>
+      <Button
+        variant="outlined"
+        color="primary"
+        size="large"
+        onClick={startQuiz}
+      >
+        {text}
+      </Button>
     );
   }
-
-
 
   return (
     <div className="App">
@@ -49,12 +56,14 @@ const App = () => {
           ? <header className="App-header"> 10-QUESTION QUIZ</header>
           : <header className="App-header"> QUESTION {questionsLeft}/10 </header>
         }
-
         {play === 0
-          ? <StartButton text="START!"></StartButton>
+          ? <StartButton text="PLAY!"></StartButton>
           : <div className='main-section'>
             {questionsLeft === 10
-              ? <FinalScore score={Number(score)} />
+              ? <div>
+                <FinalScore score={Number(score)} />
+                <StartButton text="REPLAY!"></StartButton>
+              </div>
               : <div>
                 <GetQuestion questionNumber={questionNumber} questions={questionsJSON}
                   setQuestionsLeft={setQuestionsLeft}
