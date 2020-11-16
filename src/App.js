@@ -50,10 +50,11 @@ const App = () => {
                   setQuestionsLeft={setQuestionsLeft}
                   setScore={setScore}
                 />
-                <br />
+                {/* Not deployed yet */}
+                {/* <br />
                  or
                  <br />
-                <PlayButton text="See Answers" />
+                <PlayButton text="See Answers" /> */}
 
               </div>
               : <div>
