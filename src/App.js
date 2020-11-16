@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-// import axios from 'axios'
 import FinalScore from './components/FinalScore'
 import GetQuestion from './components/GetQuestion'
 import GetAnswers from './components/GetAnswers'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import questionService from './services/getQuestions'
-import { Button } from '@material-ui/core';
+import PlayButton from './components/PlayButton'
 
 const App = () => {
   const [questionsJSON, setQuestionsJSON] = useState([])
@@ -17,7 +16,6 @@ const App = () => {
   const [play, setPlay] = useState(0)
 
 
-  // This is in use, not getQuestions in services
   useEffect(() => {
     questionService
       .getAll()
@@ -26,27 +24,6 @@ const App = () => {
       })
   }, [])
 
-  const StartButton = ({ text }) => {
-
-    const startQuiz = () => {
-      setTimeout(() => {
-        setPlay(1)
-      }, 400)
-
-
-    }
-
-    return (
-      <Button
-        variant="outlined"
-        color="primary"
-        size="large"
-        onClick={startQuiz}
-      >
-        {text}
-      </Button>
-    );
-  }
 
   return (
     <div className="App">
@@ -57,18 +34,37 @@ const App = () => {
           : <header className="App-header"> QUESTION {questionsLeft}/10 </header>
         }
         {play === 0
-          ? <StartButton text="PLAY!"></StartButton>
+          ? <PlayButton
+            text="PLAY!"
+            setPlay={setPlay}
+            setQuestionsLeft={setQuestionsLeft}
+            setScore={setScore}
+          />
           : <div className='main-section'>
             {questionsLeft === 10
               ? <div>
                 <FinalScore score={Number(score)} />
-                <StartButton text="REPLAY!"></StartButton>
+                <PlayButton
+                  text="REPLAY!"
+                  setPlay={setPlay}
+                  setQuestionsLeft={setQuestionsLeft}
+                  setScore={setScore}
+                />
+                <br />
+                 or
+                 <br />
+                <PlayButton text="See Answers" />
+
               </div>
               : <div>
-                <GetQuestion questionNumber={questionNumber} questions={questionsJSON}
+                <GetQuestion
+                  questionNumber={questionNumber}
+                  questions={questionsJSON}
                   setQuestionsLeft={setQuestionsLeft}
                 />
-                <GetAnswers questionNumber={questionNumber} questions={questionsJSON}
+                <GetAnswers
+                  questionNumber={questionNumber}
+                  questions={questionsJSON}
                   setQuestionNumber={setQuestionNumber}
                   score={score}
                   setScore={setScore}
@@ -91,5 +87,4 @@ export default App;
 
 // Improvements
 // randomAnswer to be reviewed with ...
-// refactor StartButton and header in component
-// Build and move to backend
+// 
