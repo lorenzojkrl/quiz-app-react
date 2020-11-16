@@ -18,5 +18,5 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm run server`
-Runs the json server to provide make db.json available in the development mode.\
+Runs the json server to make db.json available in the development mode.\
 Open [http://localhost:3001/questions](http://localhost:3001/questions) to view it in the browser.
