@@ -3,7 +3,7 @@ import { Button } from '@material-ui/core';
 
 
 
-const PlayButton = ({ text, setPlay, setQuestionsLeft, setScore, setQuestionsSet, setQuestionNumber }) => {
+const PlayButton = ({ text, setPlay, setQuestionsLeft, setScore, setQuestionsSet }) => {
 
     const reset = () => {
         setScore(0)

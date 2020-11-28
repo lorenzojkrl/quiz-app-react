@@ -51,7 +51,6 @@ const App = () => {
                   setQuestionsLeft={setQuestionsLeft}
                   setScore={setScore}
                   setQuestionsSet={setQuestionsSet}
-                  setQuestionNumber={setQuestionNumber}
                 />
                 {/* Not deployed yet */}
                 {/* <br />
@@ -62,15 +61,12 @@ const App = () => {
               </div>
               : <div>
                 <GetQuestion
-
                   questions={questionsJSON}
                   questionsSet={questionsSet}
                   questionsLeft={questionsLeft}
                 />
                 <GetAnswers
-
                   questions={questionsJSON}
-                  setQuestionNumber={setQuestionNumber}
                   score={score}
                   setScore={setScore}
                   questionsLeft={questionsLeft}

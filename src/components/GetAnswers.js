@@ -3,7 +3,7 @@ import AnswerButton from './AnswerButton'
 
 
 
-const GetAnswers = ({ questions, setQuestionNumber, questionsLeft, setQuestionsLeft, score, setScore, questionsSet }) => {
+const GetAnswers = ({ questions, questionsLeft, setQuestionsLeft, score, setScore, questionsSet }) => {
     const styles = {
         AnswersContainer: {
             display: 'flex',
@@ -45,7 +45,6 @@ const GetAnswers = ({ questions, setQuestionNumber, questionsLeft, setQuestionsL
         <div className="answers-container" style={styles.AnswersContainer}>
             <AnswerButton value={randomized[0]}
                 questions={questions}
-                setQuestionNumber={setQuestionNumber}
                 score={score}
                 setScore={setScore}
                 questionsLeft={questionsLeft}
@@ -53,7 +52,6 @@ const GetAnswers = ({ questions, setQuestionNumber, questionsLeft, setQuestionsL
                 questionsSet={questionsSet} />
             <AnswerButton value={randomized[1]}
                 questions={questions}
-                setQuestionNumber={setQuestionNumber}
                 score={score}
                 setScore={setScore}
                 questionsLeft={questionsLeft}
@@ -62,7 +60,6 @@ const GetAnswers = ({ questions, setQuestionNumber, questionsLeft, setQuestionsL
             <div className="break" style={styles.breakRow}></div>
             <AnswerButton value={randomized[2]}
                 questions={questions}
-                setQuestionNumber={setQuestionNumber}
                 score={score}
                 setScore={setScore}
                 questionsLeft={questionsLeft}
@@ -70,7 +67,6 @@ const GetAnswers = ({ questions, setQuestionNumber, questionsLeft, setQuestionsL
                 questionsSet={questionsSet} />
             <AnswerButton value={randomized[3]}
                 questions={questions}
-                setQuestionNumber={setQuestionNumber}
                 score={score}
                 setScore={setScore}
                 questionsLeft={questionsLeft}

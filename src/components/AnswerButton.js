@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 
 
-const AnswerButton = ({ value, questions, setQuestionNumber, questionsLeft, setQuestionsLeft, score, setScore, questionsSet }) => {
+const AnswerButton = ({ value, questions, questionsLeft, setQuestionsLeft, score, setScore, questionsSet }) => {
     const styles = {
         AnswerContainer: {
             maxWidth: '280px',
@@ -34,16 +34,12 @@ const AnswerButton = ({ value, questions, setQuestionNumber, questionsLeft, setQ
                 setRightStyle(styles.AnswerContainer)
                 setScore(score += 1)
                 setQuestionsLeft(questionsLeft + 1)
-
-                setQuestionNumber(questionsSet[questionsLeft + 1])
             }, 300);
         } else {
             setRightStyle(styles.WrongAnswer)
             setTimeout(() => {
                 setRightStyle(styles.AnswerContainer)
                 setQuestionsLeft(questionsLeft + 1)
-
-                setQuestionNumber(questionsSet[questionsLeft + 1])
             }, 300);
         }
     }
