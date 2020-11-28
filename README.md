@@ -20,3 +20,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### `npm run server`
 Runs the json server to make db.json available in the development mode.\
 Open [http://localhost:3001/questions](http://localhost:3001/questions) to view it in the browser.
+
+### Improvements
+<ul>
+  <li>Move data to MongoDB</li>
+  <li>Show Q&A to user after each round</li>
+  <li>The same question shouldn't be asked in the same round</li>
+</ul>
+
