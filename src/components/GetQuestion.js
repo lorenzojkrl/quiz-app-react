@@ -7,13 +7,13 @@ function decode(str) {
 const GetQuestion = ({ questionNumber, questions }) => {
 
     const questionContainer = {
-        color: 'blue',
+        color: 'alice-blue',
         fontStyle: 'italic',
-        fontSize: 16,
+        fontFamily: 'sans-serif',
+        fontSize: 18,
         backgroundColor: "#F8F8F8",
         minHeight: "180px",
         padding: '10px 30px',
-        // border: '1px solid black',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

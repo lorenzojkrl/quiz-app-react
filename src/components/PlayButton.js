@@ -2,15 +2,16 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 
 
-const PlayButton = ({ text, setPlay, setQuestionsLeft, setScore }) => {
+const PlayButton = ({ text, setPlay, setQuestionsLeft, setScore, setAsked }) => {
     const startQuiz = () => {
         if (text === 'PLAY!') {
             setTimeout(() => {
                 setPlay(1)
-            }, 400)
+            }, 300)
         } else {
-            setQuestionsLeft(0)
             setScore(0)
+            setQuestionsLeft(0)
+            setAsked([])
         }
 
     }

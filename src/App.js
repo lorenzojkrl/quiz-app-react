@@ -11,6 +11,7 @@ import PlayButton from './components/PlayButton'
 const App = () => {
   const [questionsJSON, setQuestionsJSON] = useState([])
   const [questionNumber, setQuestionNumber] = useState(Math.floor(Math.random() * 50));
+  const [asked, setAsked] = useState([])
   const [score, setScore] = useState(0)
   const [questionsLeft, setQuestionsLeft] = useState(0)
   const [play, setPlay] = useState(0)
@@ -24,11 +25,11 @@ const App = () => {
       })
   }, [])
 
-
   return (
     <div className="App">
       <NavBar />
       <div className="body-container">
+        {/* Move into next condition avoid repetition */}
         {play === 0
           ? <header className="App-header"> 10-QUESTION QUIZ</header>
           : <header className="App-header"> QUESTION {questionsLeft}/10 </header>
@@ -46,9 +47,9 @@ const App = () => {
                 <FinalScore score={Number(score)} />
                 <PlayButton
                   text="REPLAY!"
-                  setPlay={setPlay}
                   setQuestionsLeft={setQuestionsLeft}
                   setScore={setScore}
+                  setAsked={setAsked}
                 />
                 {/* Not deployed yet */}
                 {/* <br />
@@ -61,7 +62,6 @@ const App = () => {
                 <GetQuestion
                   questionNumber={questionNumber}
                   questions={questionsJSON}
-                  setQuestionsLeft={setQuestionsLeft}
                 />
                 <GetAnswers
                   questionNumber={questionNumber}
@@ -71,6 +71,8 @@ const App = () => {
                   setScore={setScore}
                   questionsLeft={questionsLeft}
                   setQuestionsLeft={setQuestionsLeft}
+                  asked={asked}
+                  setAsked={setAsked}
                 />
               </div>
             }
@@ -87,5 +89,4 @@ export default App;
 
 
 // Improvements
-// randomAnswer to be reviewed with ...
-// 
+// no double questions

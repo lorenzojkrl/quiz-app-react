@@ -17,7 +17,7 @@ const NavBar = () => {
     return (
         <>
             <div style={navBarStyle}>
-                Space reserved for NavBar
+                ~
             </div>
         </>
     )

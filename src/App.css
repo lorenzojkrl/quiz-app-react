@@ -4,14 +4,16 @@
 
 .App-header {
   align-items: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 30px;
   padding: 10px;
   margin-bottom: 20px;
-  /* border: 1px solid black; */
+}
+
+body {
+  background-color: aliceblue;
 }
 
 .body-container {
-  /* background-color: aqua; */
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -20,5 +22,4 @@
 .main-section {
   display: flex;
   flex-flow: column wrap;
-  /* border: 1px solid black; */
 }

@@ -1,21 +1,7 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import AnswerButton from './AnswerButton'
 
-
-const shuffle = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-        // swap elements array[i] and array[j]
-        // we use "destructuring assignment" syntax to achieve that
-        // let t = array[i]; array[i] = array[j]; array[j] = t
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array
-}
-
-// Review and eliminate, use ...
 const randomAnswer = (questionNumber, questionsList) => {
-    // console.log(`In randomAnswer - Correct answer: ${questionsList[questionNumber].correct_answer}`);
     let answersArray = [
         questionsList[questionNumber].correct_answer,
         questionsList[questionNumber].incorrect_answers[0],
@@ -23,86 +9,79 @@ const randomAnswer = (questionNumber, questionsList) => {
         questionsList[questionNumber].incorrect_answers[2]
     ];
 
+    const shuffle = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+            // swap elements array[i] and array[j]
+            // we use "destructuring assignment" syntax to achieve that
+            // let t = array[i]; array[i] = array[j]; array[j] = t
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array
+    }
+
     let randomizedAnswers = shuffle(answersArray);
-    // console.log('In randomAnswer - randomized: ', randomizedAnswers);
     return randomizedAnswers;
 }
 
-
-const GetAnswers = ({ questionNumber, questions, setQuestionNumber, questionsLeft, setQuestionsLeft, score, setScore }) => {
-    const AnswersContainer = {
-        display: 'flex',
-        justifyContent: 'space-around',
-        flexFlow: 'row wrap',
-    }
-
-    const AnswerContainer = {
-        // padding: '20px',
-        // border: '1px solid black',
-        maxWidth: '280px',
-        // maxHeight: '70px',
-        flex: '300px',
-        // background: 'none',
-        fontSize: 16,
-        margin: '5px',
-    }
-
-    const breakRow = {
-        flexBasis: '100%',
-        height: 0,
-    }
-
-    const AnswerButton = ({ value, e }) => {
-
-        const handleUserAnswer = ({ value, e }) => {
-            // console.log("In handleUserAnswer - entered");
-            // console.log("Text is: ", value)
-            if (value === questions[questionNumber].correct_answer) {
-                // console.log("CORRECT! ", value)
-                setScore(score += 1)
-                // e.target.style.border = '1px solid green'
-                // setTimeout(() => {
-                //     // alert('resetting')
-                //     setScore(score += 1)
-                //     setQuestionsLeft(questionsLeft + 1)
-                //     setQuestionNumber(Math.floor(Math.random() * 50))
-                // }, 700)
-            } else {
-                // console.log("WRONG! ", value)
-                // e.target.style.border = '1px solid red'
-                // setTimeout(() => {
-                //     // alert('resetting')
-                //     setQuestionsLeft(questionsLeft + 1)
-                //     setQuestionNumber(Math.floor(Math.random() * 50))
-                // }, 700)
-            }
-
-            setQuestionsLeft(questionsLeft + 1)
-            setQuestionNumber(Math.floor(Math.random() * 50))
-        }
-
-        return (
-            <Button
-                variant="outlined"
-                color="primary"
-                size="large"
-                style={AnswerContainer}
-                onClick={(e) => handleUserAnswer({ value, e })}
-            >
-                {value}
-            </Button>
-        )
+const GetAnswers = ({ questionNumber, questions, setQuestionNumber, questionsLeft, setQuestionsLeft, score, setScore, asked, setAsked }) => {
+    const styles = {
+        AnswersContainer: {
+            display: 'flex',
+            justifyContent: 'space-around',
+            flexFlow: 'row wrap',
+        },
+        breakRow: {
+            flexBasis: '100%',
+            height: 0,
+        },
     }
 
     let randomized = randomAnswer(questionNumber, questions)
 
     return (
-        <div className="answers-container" style={AnswersContainer}>
-            <AnswerButton value={randomized[0]} />
-            <AnswerButton value={randomized[1]} />
-            <div className="break" style={breakRow}></div>
-            <AnswerButton value={randomized[2]} />
-            <AnswerButton value={randomized[3]} />
+        <div className="answers-container" style={styles.AnswersContainer}>
+            <AnswerButton value={randomized[0]}
+                questionNumber={questionNumber}
+                questions={questions}
+                setQuestionNumber={setQuestionNumber}
+                score={score}
+                setScore={setScore}
+                questionsLeft={questionsLeft}
+                setQuestionsLeft={setQuestionsLeft}
+                asked={asked}
+                setAsked={setAsked} />
+            <AnswerButton value={randomized[1]}
+                questionNumber={questionNumber}
+                questions={questions}
+                setQuestionNumber={setQuestionNumber}
+                score={score}
+                setScore={setScore}
+                questionsLeft={questionsLeft}
+                setQuestionsLeft={setQuestionsLeft}
+                asked={asked}
+                setAsked={setAsked} />
+            <div className="break" style={styles.breakRow}></div>
+            <AnswerButton value={randomized[2]}
+                questionNumber={questionNumber}
+                questions={questions}
+                setQuestionNumber={setQuestionNumber}
+                score={score}
+                setScore={setScore}
+                questionsLeft={questionsLeft}
+                setQuestionsLeft={setQuestionsLeft}
+                asked={asked}
+                setAsked={setAsked} />
+            <AnswerButton value={randomized[3]}
+                questionNumber={questionNumber}
+                questions={questions}
+                setQuestionNumber={setQuestionNumber}
+                score={score}
+                setScore={setScore}
+                questionsLeft={questionsLeft}
+                setQuestionsLeft={setQuestionsLeft}
+                asked={asked}
+                setAsked={setAsked} />
         </div>
     );
 };
