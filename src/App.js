@@ -10,10 +10,10 @@ import PlayButton from './components/PlayButton'
 
 const App = () => {
   const [questionsJSON, setQuestionsJSON] = useState([])
-  const [questionNumber, setQuestionNumber] = useState(Math.floor(Math.random() * 50));
-  const [asked, setAsked] = useState([])
-  const [score, setScore] = useState(0)
+  const [questionsSet, setQuestionsSet] = useState([])
   const [questionsLeft, setQuestionsLeft] = useState(0)
+  const [questionNumber, setQuestionNumber] = useState(questionsSet[questionsLeft]);
+  const [score, setScore] = useState(0)
   const [play, setPlay] = useState(0)
 
 
@@ -40,6 +40,7 @@ const App = () => {
             setPlay={setPlay}
             setQuestionsLeft={setQuestionsLeft}
             setScore={setScore}
+            setQuestionsSet={setQuestionsSet}
           />
           : <div className='main-section'>
             {questionsLeft === 10
@@ -49,7 +50,8 @@ const App = () => {
                   text="REPLAY!"
                   setQuestionsLeft={setQuestionsLeft}
                   setScore={setScore}
-                  setAsked={setAsked}
+                  setQuestionsSet={setQuestionsSet}
+                  setQuestionNumber={setQuestionNumber}
                 />
                 {/* Not deployed yet */}
                 {/* <br />
@@ -60,19 +62,20 @@ const App = () => {
               </div>
               : <div>
                 <GetQuestion
-                  questionNumber={questionNumber}
+
                   questions={questionsJSON}
+                  questionsSet={questionsSet}
+                  questionsLeft={questionsLeft}
                 />
                 <GetAnswers
-                  questionNumber={questionNumber}
+
                   questions={questionsJSON}
                   setQuestionNumber={setQuestionNumber}
                   score={score}
                   setScore={setScore}
                   questionsLeft={questionsLeft}
                   setQuestionsLeft={setQuestionsLeft}
-                  asked={asked}
-                  setAsked={setAsked}
+                  questionsSet={questionsSet}
                 />
               </div>
             }
@@ -89,4 +92,4 @@ export default App;
 
 
 // Improvements
-// no double questions
+// no duplicate questions

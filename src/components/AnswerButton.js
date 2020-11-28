@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 
 
-const AnswerButton = ({ value, e, questionNumber, questions, setQuestionNumber, questionsLeft, setQuestionsLeft, score, setScore, asked, setAsked }) => {
+const AnswerButton = ({ value, questions, setQuestionNumber, questionsLeft, setQuestionsLeft, score, setScore, questionsSet }) => {
     const styles = {
         AnswerContainer: {
             maxWidth: '280px',
@@ -26,33 +26,16 @@ const AnswerButton = ({ value, e, questionNumber, questions, setQuestionNumber, 
         }
     }
     const [rightStyle, setRightStyle] = useState(styles.AnswerContainer)
-    const handleUserAnswer = ({ value, e }) => {
+    const handleUserAnswer = ({ value }) => {
 
-        if (value === questions[questionNumber].correct_answer) {
+        if (value === questions[questionsSet[questionsLeft]].correct_answer) {
             setRightStyle(styles.RightAnswer)
             setTimeout(() => {
                 setRightStyle(styles.AnswerContainer)
                 setScore(score += 1)
                 setQuestionsLeft(questionsLeft + 1)
 
-                // const genNewNumber = asked => {
-                //     let number = Math.floor(Math.random() * 50)
-                //     if (asked.includes(number)) {
-                //         genNewNumber(asked)
-                //     } else {
-                //         return number
-                //     }
-                // }
-                // let prova = genNewNumber(asked)
-                // console.log(prova);
-                // console.log(asked);
-                // let newArr = asked.concat([prova])
-                // console.log("newArr", newArr);
-                // setQuestionNumber(newArr)
-
-                setQuestionNumber(Math.floor(Math.random() * 50))
-
-
+                setQuestionNumber(questionsSet[questionsLeft + 1])
             }, 300);
         } else {
             setRightStyle(styles.WrongAnswer)
@@ -60,24 +43,7 @@ const AnswerButton = ({ value, e, questionNumber, questions, setQuestionNumber, 
                 setRightStyle(styles.AnswerContainer)
                 setQuestionsLeft(questionsLeft + 1)
 
-                // const genNewNumber = asked => {
-                //     let number = Math.floor(Math.random() * 50)
-                //     if (asked.includes(number)) {
-                //         genNewNumber(asked)
-                //     } else {
-                //         return number
-                //     }
-                // }
-                // let prova = genNewNumber(asked)
-
-                // console.log(prova);
-                // console.log(asked);
-                // let newArr = asked.push(prova)
-                // console.log("newArr", newArr);
-
-                // setQuestionNumber(newArr)
-
-                setQuestionNumber(Math.floor(Math.random() * 50))
+                setQuestionNumber(questionsSet[questionsLeft + 1])
             }, 300);
         }
     }
@@ -88,7 +54,7 @@ const AnswerButton = ({ value, e, questionNumber, questions, setQuestionNumber, 
             color="primary"
             size="large"
             style={rightStyle}
-            onClick={(e) => handleUserAnswer({ value, e })}
+            onClick={() => handleUserAnswer({ value })}
         >
             {value}
         </Button>

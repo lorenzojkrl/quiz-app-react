@@ -4,7 +4,7 @@ function decode(str) {
     return decodeURI(str)
 }
 
-const GetQuestion = ({ questionNumber, questions }) => {
+const GetQuestion = ({ questions, questionsSet, questionsLeft }) => {
 
     const questionContainer = {
         color: 'alice-blue',
@@ -19,8 +19,8 @@ const GetQuestion = ({ questionNumber, questions }) => {
         alignItems: 'center',
         marginBottom: '10px'
     }
-
-    let question = decode(questions[questionNumber].question)
+    console.log("number: ", questionsSet[questionsLeft])
+    let question = decode(questions[questionsSet[questionsLeft]].question)
 
     return (
         <div className="question-container" style={questionContainer}>
