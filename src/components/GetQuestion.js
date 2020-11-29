@@ -19,9 +19,8 @@ const GetQuestion = ({ questions, questionsSet, questionsLeft }) => {
         alignItems: 'center',
         marginBottom: '10px'
     }
-    console.log("number: ", questionsSet[questionsLeft])
     let question = decode(questions[questionsSet[questionsLeft]].question)
-
+    console.log(question)
     return (
         <div className="question-container" style={questionContainer}>
             <h2>{question}</h2>

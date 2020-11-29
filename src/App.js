@@ -12,7 +12,6 @@ const App = () => {
   const [questionsJSON, setQuestionsJSON] = useState([])
   const [questionsSet, setQuestionsSet] = useState([])
   const [questionsLeft, setQuestionsLeft] = useState(0)
-  const [questionNumber, setQuestionNumber] = useState(questionsSet[questionsLeft]);
   const [score, setScore] = useState(0)
   const [play, setPlay] = useState(0)
 
@@ -29,20 +28,19 @@ const App = () => {
     <div className="App">
       <NavBar />
       <div className="body-container">
-        {/* Move into next condition avoid repetition */}
         {play === 0
-          ? <header className="App-header"> 10-QUESTION QUIZ</header>
-          : <header className="App-header"> QUESTION {questionsLeft}/10 </header>
-        }
-        {play === 0
-          ? <PlayButton
-            text="PLAY!"
-            setPlay={setPlay}
-            setQuestionsLeft={setQuestionsLeft}
-            setScore={setScore}
-            setQuestionsSet={setQuestionsSet}
-          />
+          ? <div>
+            <header className="App-header"> 10-QUESTION QUIZ</header>
+            <PlayButton
+              text="PLAY!"
+              setPlay={setPlay}
+              setQuestionsLeft={setQuestionsLeft}
+              setScore={setScore}
+              setQuestionsSet={setQuestionsSet}
+            />
+          </div>
           : <div className='main-section'>
+            <header className="App-header"> QUESTION {questionsLeft}/10 </header>
             {questionsLeft === 10
               ? <div>
                 <FinalScore score={Number(score)} />
@@ -88,4 +86,6 @@ export default App;
 
 
 // Improvements
-// no duplicate questions
+// refactor
+// remove redundant code
+// Add a summary of Q&A 

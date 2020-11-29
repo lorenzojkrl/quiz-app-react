@@ -14,8 +14,8 @@ const PlayButton = ({ text, setPlay, setQuestionsLeft, setScore, setQuestionsSet
     const generateSet = () => {
         let arr = [];
         while (arr.length < 10) {
-            let r = Math.floor(Math.random() * 50) + 1;
-            if (arr.indexOf(r) === -1) arr.push(r);
+            let r = Math.floor(Math.random() * 50)
+            if (arr.indexOf(r) === -1) arr.push(r)
         }
         setQuestionsSet(arr)
         console.log("REPlay with: ", arr);
