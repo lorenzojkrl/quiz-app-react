@@ -7,7 +7,7 @@ const jsonServerUrl = 'http://localhost:3001/api/questions'
 
 
 const getAll = () => {
-    const request = axios.get(jsonServerUrl)
+    const request = axios.get(baseUrl)
     return request.then(response => response.data)
 }
 

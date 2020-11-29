@@ -20,10 +20,10 @@ const GetQuestion = ({ questions, questionsSet, questionsLeft }) => {
         marginBottom: '10px'
     }
     let question = decode(questions[questionsSet[questionsLeft]].question)
-    console.log(question)
+    // console.log(question)
     return (
         <div className="question-container" style={questionContainer}>
-            <h2>{question}</h2>
+            <h2 style={{ color: 'blue' }}>{question}</h2>
         </div>
     );
 };

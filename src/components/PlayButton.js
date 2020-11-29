@@ -18,7 +18,7 @@ const PlayButton = ({ text, setPlay, setQuestionsLeft, setScore, setQuestionsSet
             if (arr.indexOf(r) === -1) arr.push(r)
         }
         setQuestionsSet(arr)
-        console.log("REPlay with: ", arr);
+        // console.log("REPlay with: ", arr);
     }
 
     const startQuiz = () => {
